@@ -1,0 +1,29 @@
+# Go Native Polska
+
+> Sklep internetowy z naturalną karmą premium dla psów i kotów. Karma bez zbóż z 70% świeżego mięsa, prosto z Irlandii. Subskrypcja z rabatem, darmowa dostawa od 49 zł, 14 dni na zwrot.
+
+Go Native to irlandzka rodzinna marka karmy dla psów i kotów. Oferujemy karmę suchą, mokrą, przysmaki, gryzaki dentystyczne oraz funkcjonalne suplementy. Wspieramy regularnych klientów subskrypcją (10% pierwsza dostawa, 5% kolejne) z płatnością BLIK lub kartą.
+
+## Pages
+
+- [Strona główna](/): Najlepsze produkty, korzyści i misja marki Go Native.
+- [Wszystkie produkty](/produkty): Pełny katalog karm, przysmaków i gryzaków.
+- [Karma dla psów](/karma): Karma sucha bez zbóż dla psów dorosłych.
+- [Karma dla szczeniąt](/karma-szczenieta): Karma rozwojowa dla szczeniąt.
+- [Karma dla kotów](/karma-koty): Karma premium dla kotów dorosłych.
+- [Karma dla kociąt](/karma-kocieta): Karma rozwojowa dla kociąt.
+- [Przysmaki](/przysmaki): Naturalne smakołyki treningowe.
+- [Przysmaki funkcjonalne](/przysmaki-funkcjonalne): Przysmaki wspierające zdrowie.
+- [Gryzaki](/gryzaki): Naturalne gryzaki dla psów.
+- [Gryzaki dentystyczne](/gryzaki-dentystyczne): Gryzaki wspierające higienę jamy ustnej.
+- [Subskrypcja](/abonament): Cykliczne dostawy karmy z rabatem.
+- [O nas](/o-nas): Historia rodzinnej marki Go Native z Irlandii.
+- [Blog](/blog): Porady o żywieniu, zdrowiu i pielęgnacji zwierząt.
+- [Kontakt](/kontakt): kontakt@fenixdog.pl, +48 887 500 749.
+
+## Optional
+
+- [Dostawa](/shipping): Informacje o wysyłce i terminach.
+- [Zwroty](/returns): 14 dni na zwrot — procedura i formularz.
+- [Regulamin](/terms): Regulamin sklepu Go Native Polska.
+- [Polityka prywatności](/privacy): Zasady przetwarzania danych.

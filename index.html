@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Content Security Policy - Allow Google, Stripe, TPay, Facebook scripts -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+        https://*.googletagmanager.com 
+        https://*.google-analytics.com
+        https://www.googleadservices.com
+        https://googleads.g.doubleclick.net
+        https://pagead2.googlesyndication.com
+        https://connect.facebook.net
+        https://www.facebook.com
+        https://js.stripe.com
+        https://*.stripe.com
+        https://*.elfsight.com
+        https://elfsightcdn.com
+        https://*.elfsightcdn.com
+        https://www.clarity.ms
+        https://*.clarity.ms
+        https://geowidget.inpost.pl
+        https://*.inpost.pl
+        https://ruch-osm.sysadvisors.pl
+        https://code.jquery.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://geowidget.inpost.pl https://ruch-osm.sysadvisors.pl;
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' data: blob: https: http:
+        https://*.google-analytics.com 
+        https://*.googletagmanager.com
+        https://*.g.doubleclick.net
+        https://*.google.com
+        https://*.google.pl
+        https://www.googleadservices.com
+        https://*.stripe.com
+        https://www.facebook.com
+        https://*.tile.openstreetmap.org;
+      connect-src 'self' 
+        https://*.supabase.co 
+        wss://*.supabase.co
+        https://*.google-analytics.com 
+        https://*.analytics.google.com
+        https://*.googletagmanager.com
+        https://*.g.doubleclick.net
+        https://*.google.com
+        https://*.google.pl
+        https://*.goog
+        https://www.merchant-center-analytics.goog
+        https://pagead2.googlesyndication.com
+        https://www.googleadservices.com
+        https://googleads.g.doubleclick.net
+        https://www.facebook.com
+        https://connect.facebook.net
+        https://*.stripe.com
+        https://api.stripe.com
+        https://*.elfsight.com
+        https://*.elfsightcdn.com
+        https://*.clarity.ms
+        https://www.clarity.ms
+        https://geowidget.inpost.pl
+        https://*.inpost.pl
+        https://ruch-osm.sysadvisors.pl
+        https://*.sysadvisors.pl;
+      frame-src 'self' 
+        https://www.googletagmanager.com
+        https://td.doubleclick.net
+        https://bid.g.doubleclick.net
+        https://www.facebook.com
+        https://geowidget.inpost.pl
+        https://*.inpost.pl
+        https://sprzedaz.orlen.pl
+        https://js.stripe.com
+        https://*.stripe.com
+        https://*.elfsight.com;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self' https://*.tpay.com https://*.stripe.com;
+      media-src 'self' blob: data:;
+    " />
+    
+    <!-- Google Consent Mode v2 - MUST be before GTM/gtag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      // Set default consent state (denied) - required for Consent Mode v2
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'granted',
+        'personalization_storage': 'denied',
+        'security_storage': 'granted',
+        'wait_for_update': 500
+      });
+      
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', true);
+      
+      // Check for saved consent and apply immediately
+      (function() {
+        try {
+          var savedConsent = localStorage.getItem('cookieConsent');
+          if (savedConsent) {
+            var consent = JSON.parse(savedConsent);
+            gtag('consent', 'update', {
+              'ad_storage': consent.marketing || consent.partners ? 'granted' : 'denied',
+              'ad_user_data': consent.marketing || consent.partners ? 'granted' : 'denied',
+              'ad_personalization': consent.marketing || consent.partners ? 'granted' : 'denied',
+              'analytics_storage': consent.analytics ? 'granted' : 'denied',
+              'personalization_storage': consent.functional ? 'granted' : 'denied'
+            });
+          }
+        } catch(e) {}
+      })();
+    </script>
+    
+    <!-- KOPIA ROBOCZA (LIDER): Google Tag Manager USUNIĘTY CELOWO.
+         Kontener GTM-NBCCTQ75 karmi PRODUKCYJNE GA4, Google Ads i Meta. Ruch z kopii
+         roboczej zafałszowałby dane sklepu i mógłby rozjechać Smart Bidding kampanii
+         (Kasia ma prośbę o brak zmian w Ads). Nie podmieniać na inny kontener „na
+         później" — kopia robocza nie potrzebuje pomiaru. -->
+    <!-- End Google Tag Manager (wyłączony w kopii) -->
+
+    <!-- UWAGA: bezpośredni gtag.js (G-LF43S7DB8F + AW-17682680204) USUNIĘTY 02.07.2026.
+         GTM (GTM-NBCCTQ75) jest jedynym hubem konfigurującym GA4 i Google Ads —
+         podwójna konfiguracja dublowała page_view w GA4 i tag bazowy Ads.
+         Blok Consent Mode v2 powyżej celowo ZOSTAJE (definiuje gtag() dla zgód). -->
+
+    <!-- Microsoft Clarity — NIE śledzimy panelu admina (/admin). To wewnętrzny ruch,
+         który zaśmiecał Insights (rekomendacje z panelu). Liczymy tylko realnych klientów. -->
+    <!-- KOPIA ROBOCZA (LIDER): Clarity (v808u5vql2) USUNIĘTY CELOWO — to projekt
+         produkcyjny Go Native, nagrania z kopii roboczej zaśmiecałyby Insights. -->
+    
+    
+    
+    <!-- LCP mobile: hero-poster jako priorytetowy preload (85% ruchu to mobile,
+         prerender zamraża wariant desktopowy, więc preload musi być statyczny) -->
+    <link rel="preload" as="image" href="/hero-poster.webp" media="(max-width: 768px)" fetchpriority="high" />
+
+    <title>Go Native - Naturalna Karma dla Psów bez Zbóż | Polska</title>
+    <meta name="description" content="Go Native - ultra premium karma dla psów bez zbóż, pełna świeżego mięsa i superfoods. Naturalna jakość prosto z Irlandii dla zdrowia i energii Twojego psa." />
+    <meta name="author" content="Go Native Polska" />
+    <!-- KOPIA ROBOCZA (LIDER): noindex OBOWIĄZKOWY. Sklep i tak przegrywa własną
+         frazę brandową, a zaindeksowany duplikat kanibalizowałby produkcję. -->
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <!-- JSON-LD Structured Data - Organization & WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://gonative.fenixdog.pl/#organization",
+          "name": "Go Native Polska",
+          "alternateName": "Go Native",
+          "url": "https://gonative.fenixdog.pl/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://storage.googleapis.com/gpt-engineer-file-uploads/34QvZWr0azNWRulu0hXZCsvoD6R2/uploads/1764673057291-favicon-32x32.png"
+          },
+          "description": "Go Native - ultra premium karma dla psów bez zbóż, pełna świeżego mięsa i superfoods. Naturalna jakość prosto z Irlandii.",
+          "sameAs": [
+            "https://www.instagram.com/gonative.polska/",
+            "https://www.facebook.com/profile.php?id=61574228498498"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": "Polish"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://gonative.fenixdog.pl/#website",
+          "url": "https://gonative.fenixdog.pl/",
+          "name": "Go Native Polska",
+          "description": "Naturalna karma premium dla psów bez zbóż - 70% mięsa, prosto z Irlandii",
+          "publisher": {
+            "@id": "https://gonative.fenixdog.pl/#organization"
+          },
+          "inLanguage": "pl-PL"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gonative.fenixdog.pl/" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content="Go Native Polska" />
+    <meta property="og:title" content="Go Native - Naturalna Karma dla Psów bez Zbóż" />
+    <meta property="og:description" content="Ultra premium karma dla psów bez zbóż, pełna świeżego mięsa i superfoods. Naturalna jakość prosto z Irlandii." />
+    <meta property="og:image" content="https://gonative.fenixdog.pl/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@GoNativePolska" />
+    <meta name="twitter:title" content="Go Native - Naturalna Karma dla Psów bez Zbóż" />
+    <meta name="twitter:description" content="Ultra premium karma dla psów bez zbóż, pełna świeżego mięsa i superfoods. Naturalna jakość prosto z Irlandii." />
+    <meta name="twitter:image" content="https://gonative.fenixdog.pl/og-image.jpg" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- KOPIA ROBOCZA (LIDER): preconnect przestawiony na projekt kopii. Wskazywał
+         na produkcyjny Supabase, co otwierało połączenie do żywej bazy. -->
+    <link rel="preconnect" href="https://sjtwocwoxrqvkryjjggl.supabase.co" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/34QvZWr0azNWRulu0hXZCsvoD6R2/uploads/1764673057291-favicon-32x32.png" />
+    
+    <!-- Canonical is set per-route via react-helmet-async (PageSEO component). -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <script type="module" crossorigin src="/assets/index-DKB-vbUQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BzYZO1UX.css">
+  </head>
+
+  <body>
+    <!-- KOPIA ROBOCZA (LIDER): noscript GTM usunięty razem z kontenerem. -->
+    
+    <div id="root"></div>
+  </body>
+</html>

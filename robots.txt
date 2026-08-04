@@ -1,0 +1,8 @@
+# KOPIA ROBOCZA (LIDER) — CAŁY HOST WYŁĄCZONY Z INDEKSOWANIA.
+# To nie jest sklep produkcyjny. Zaindeksowanie tej kopii kanibalizowałoby
+# frazy Go Native (sklep i tak przegrywa własny brand), dlatego blokujemy
+# wszystko, a nie tylko koszyk i panel. Druga warstwa: <meta name="robots"
+# content="noindex, nofollow"> w index.html. Nie przywracać przy podmianie
+# sklepów bez świadomej decyzji — produkcyjny robots.txt jest w repo Go Native.
+User-agent: *
+Disallow: /
