@@ -1,2 +1,9 @@
-/merchant-feed.xml https://mpxkmkfxhfgapreervjw.supabase.co/functions/v1/google-merchant-feed 301
-/sitemap.xml https://mpxkmkfxhfgapreervjw.supabase.co/functions/v1/sitemap 301
+# KOPIA ROBOCZA — przekierowania celowo PUSTE.
+#
+# W repozytorium produkcyjnym ten plik przekierowywał /sitemap.xml i /merchant-feed.xml
+# do funkcji edge PROJEKTU PRODUKCYJNEGO. Na nginksie VPS-a plik był i tak bezczynny
+# (przekierowania robi konfiguracja serwera), ale hostingi statyczne w rodzaju Netlify
+# czy Cloudflare Pages honorują go dosłownie — kopia robocza wysyłałaby wtedy ruch
+# do żywego sklepu i podawała jego sitemapę jako swoją.
+#
+# Kopia jest oznaczona noindex i nie potrzebuje ani sitemapy, ani feedu do Google.
