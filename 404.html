@@ -143,7 +143,13 @@
     <link rel="preload" as="image" href="/hero-poster.webp" media="(max-width: 768px)" fetchpriority="high" />
 
     <title>Go Native - Naturalna Karma dla Psów bez Zbóż | Polska</title>
-    <meta name="description" content="Go Native - ultra premium karma dla psów bez zbóż, pełna świeżego mięsa i superfoods. Naturalna jakość prosto z Irlandii dla zdrowia i energii Twojego psa." />
+    <!-- BEZ statycznego meta description tutaj celowo: każda strona z realną
+         treścią ustawia własny opis przez PageSEO/Helmet, a Helmet NIE usuwa
+         tagów wpisanych na sztywno w index.html - zostawały dwa <meta name=
+         "description"> naraz (ten sam problem dotyczył og:title/description/
+         image i twitter:title/description/image niżej), co dla czytników czy­
+         tających surowy HTML (część botów social-media) skutkowało pokazywa­
+         niem opisu strony głównej zamiast opisu faktycznej podstrony/produktu. -->
     <meta name="author" content="Go Native Polska" />
     <!-- KOPIA ROBOCZA (LIDER): noindex OBOWIĄZKOWY. Sklep i tak przegrywa własną
          frazę brandową, a zaindeksowany duplikat kanibalizowałby produkcję. -->
@@ -190,23 +196,18 @@
     }
     </script>
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://gonative.fenixdog.pl/" />
+    <!-- Open Graph / Facebook - og:type/title/description/image ustawia każda
+         strona z treścią przez PageSEO/Helmet (patrz komentarz przy meta
+         description wyżej - ten sam problem podwójnych tagów). Zostają tu
+         tylko wartości, których Helmet NIE nadpisuje per-stronę. -->
     <meta property="og:locale" content="pl_PL" />
     <meta property="og:site_name" content="Go Native Polska" />
-    <meta property="og:title" content="Go Native - Naturalna Karma dla Psów bez Zbóż" />
-    <meta property="og:description" content="Ultra premium karma dla psów bez zbóż, pełna świeżego mięsa i superfoods. Naturalna jakość prosto z Irlandii." />
-    <meta property="og:image" content="https://gonative.fenixdog.pl/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@GoNativePolska" />
-    <meta name="twitter:title" content="Go Native - Naturalna Karma dla Psów bez Zbóż" />
-    <meta name="twitter:description" content="Ultra premium karma dla psów bez zbóż, pełna świeżego mięsa i superfoods. Naturalna jakość prosto z Irlandii." />
-    <meta name="twitter:image" content="https://gonative.fenixdog.pl/og-image.jpg" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -214,15 +215,26 @@
     <!-- KOPIA ROBOCZA (LIDER): preconnect przestawiony na projekt kopii. Wskazywał
          na produkcyjny Supabase, co otwierało połączenie do żywej bazy. -->
     <link rel="preconnect" href="https://sjtwocwoxrqvkryjjggl.supabase.co" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Ladowanie nieblokujace renderowania: przelacznik media="print" -> "all"
+         w onload (CSP script-src ma 'unsafe-inline', wiec dziala), plus noscript
+         jako fallback gdy JS wylaczony. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" />
+    </noscript>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/34QvZWr0azNWRulu0hXZCsvoD6R2/uploads/1764673057291-favicon-32x32.png" />
     
     <!-- Canonical is set per-route via react-helmet-async (PageSEO component). -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <script type="module" crossorigin src="/assets/index-CR3QdtWr.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CIYsm1m9.css">
+    <script type="module" crossorigin src="/assets/index-CJLgEsOw.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DWNvRH-d.css">
   </head>
 
   <body>
