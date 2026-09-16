@@ -1,0 +1,1 @@
+import{c as s}from"./index-DsmkPXaq.js";const d=({children:a,count:r})=>r===1?s.jsx("div",{className:"grid grid-cols-1 max-w-[320px] mx-auto gap-4 md:gap-6",children:a}):r===2?s.jsx("div",{className:"grid grid-cols-2 max-w-xl md:max-w-2xl mx-auto gap-4 md:gap-6",children:a}):s.jsx("div",{className:"grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6",children:a});export{d as P};
